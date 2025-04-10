@@ -1,12 +1,9 @@
 import axios from 'axios';
 
 class ApiService {
-  getMovies({ language, apiKey }: { language: string; apiKey: string }) {
-    const category = 'popular'; // possible values: top_rated | upcoming | now_playing;
-    const url = `https://api.themoviedb.org/3/movie/${category}?language=${language}&api_key=${apiKey}`;
+  getMovies({ language, apiKey, listType }: { language: string; apiKey: string, listType: string }) {
+    const url = `https://api.themoviedb.org/3/movie/${listType}?language=${language}&api_key=${apiKey}`;
 
-    // NOTICE: 
-    // 
     return axios.get(url);
   }
 }

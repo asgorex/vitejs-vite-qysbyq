@@ -7,6 +7,7 @@ export default function Movies() {
   // const apiKey = 'apiKey = '1b501bbda107113acc653f328a2e935d';
   const [movies, setMovies] = useState([]);
   const [language, setLanguage] = useState('en');
+  const [listType, setListType] = useState('popular');
   const [selectedRule, setSelectedRule] = useState('fibonacci');
 
   useEffect(() => {
@@ -15,12 +16,14 @@ export default function Movies() {
       .getMovies({
         language,
         apiKey,
+        listType
       })
       .then((response) => {
         console.log('Response', response.data);
         setMovies(response.data.results);
+        setListType(listType);
       });
-  }, [language]);
+  }, [language, listType]);
 
   const getYear = (date: string) => {
     const year = date.split('-')[0];
@@ -33,7 +36,16 @@ export default function Movies() {
     <div>
       <div>
         <div>
-            Category: Popular
+            Category: 
+            <select
+              name="Category" value={listType} 
+              onChange={e => setListType(e.target.value)}
+              >
+              <option value="popular">Popular</option>
+              <option value="now_playing">Now Playing</option>
+              <option value="top_rated">Top Rated</option>
+              <option value="upcoming">Upcoming</option>
+            </select>
         </div>
         <div>
           <div>
