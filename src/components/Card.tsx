@@ -9,6 +9,9 @@ export default function Card({image, title, year, num, rule, overview}:{image:st
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    // as per documentation https://developer.themoviedb.org/docs/image-basics
+    const baseImagePath = 'http://image.tmdb.org/t/p/w500/';
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -60,7 +63,7 @@ export default function Card({image, title, year, num, rule, overview}:{image:st
     return (
         <>
          <div className='card' style={{backgroundColor: color }} onClick={handleOpen}>
-            <img src={image}></img>
+            <img src={baseImagePath+image}></img>
             <div>
                 <div className='title'>
                     {title} {num}
