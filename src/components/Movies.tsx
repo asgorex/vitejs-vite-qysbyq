@@ -59,7 +59,7 @@ export default function Movies() {
           </div>
         </div>
       </div>
-      {movies.map((movie, key)=>{return <Card image={movie.poster_path} title={movie.title} year={getYear(movie.release_date)} num={key+1} rule={selectedRule}></Card>})}
+      {movies.map((movie, key)=>{return <Card image={movie.poster_path} title={movie.title} year={getYear(movie.release_date)} num={key+1} rule={selectedRule} overview={movie.overview}></Card>})}
     </div>
   );
 }
